@@ -134,3 +134,39 @@ classifyForm.onsubmit = function(e) {
         resultDiv.innerHTML = `<p>Error occurred while classifying the image: ${error.message}</p>`;
     });
 };
+
+document.getElementById("uploadForm").onsubmit = async (e) => {
+  e.preventDefault();
+  const files = document.getElementById("fileInput").files;
+  const formData = new FormData();
+  for (let file of files) {
+      formData.append("files", file);
+  }
+  
+  const response = await fetch("/classify_angle/", {
+      method: "POST",
+      body: formData
+  });
+
+  const result = await response.json();
+  displayResults(result);
+};
+
+function displayResults(results) {
+  const resultDiv = document.getElementById("result");
+  resultDiv.innerHTML = "";
+
+  for (let angle in results) {
+      const angleHeader = document.createElement("h3");
+      angleHeader.textContent = angle;
+      resultDiv.appendChild(angleHeader);
+
+      results[angle].forEach(filename => {
+          const img = document.createElement("img");
+          img.src = `/temp/${filename}`;
+          img.alt = filename;
+          img.width = 200;  // Adjust width as needed
+          resultDiv.appendChild(img);
+      });
+  }
+}
