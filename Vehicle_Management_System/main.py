@@ -33,7 +33,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.post("/vehicles/") #Decorator
+#RESTful API Endpoints (CRUD Operations) listed below
+# POST, GET, PUT, DELETE HTTP endpoints for vehicles to perform CRUD operations
+#FastAPI is a web framework. here async and await are used to make the code asynchronous
+@app.post("/vehicles/") #Decorator 
 async def create_vehicle(vehicle: Vehicle): #Endpoint Function
     vehicle.id = len(vehicles_db) + 1
     vehicles_db[vehicle.id] = vehicle
