@@ -40,9 +40,16 @@
     </form>
 
     <div id="classification-result"></div>
-    
+
+    <h2>Upload Car Images</h2>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" id="fileInput" name="files" multiple>
+        <input type="submit" value="Upload">
+    </form>
+    <div id="result"></div>
+
     <div id="vehicle-list"></div>
 
-    <script src="app.js"></script>
+    <script src="/static/app.js"></script>
 </body>
 </html>
