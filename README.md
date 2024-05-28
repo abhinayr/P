@@ -1,4 +1,4 @@
-●	Core Python Language Features:  ✅
+●	Core Python Language Features: 
     ○	Data types (lists, tuples, dictionaries, sets)
     ○	Control flow (if statements, loops)
     ○	Functions and functional programming
