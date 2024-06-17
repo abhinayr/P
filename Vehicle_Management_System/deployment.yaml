@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vehicle-management
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: vehicle-management
+  template:
+    metadata:
+      labels:
+        app: vehicle-management
+    spec:
+      containers:
+      - name: vehicle-management
+        image: vehicle-management-system:latest
+        ports:
+        - containerPort: 8000
